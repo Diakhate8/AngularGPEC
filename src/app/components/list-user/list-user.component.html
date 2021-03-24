@@ -1,0 +1,46 @@
+<div class=" row navbar navbar-expand navbar-light bg-gray topbar mb-4 static-top shadow  ml-auto">
+  <ul class="navbar-nav  text-black-50">
+    <h1>Liste des Utulisateurs</h1>
+  </ul>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1-12">
+      <table class="table table-responsive">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Username</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Telephone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Profil</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor=" let user of dataUser">
+          <td>{{user.id}}</td>
+          <td>{{user.username}}</td>
+          <td>{{user.prenom}}</td>
+          <td>{{user.nom}}</td>
+          <td>{{user.adresse}}</td>
+          <td>{{user.telephone}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.libelle}}</td>
+          <td>
+            <div *ngIf="user.isActive; else elseBlock">
+                <i class="fa fa-toggle-on text-success md " aria-hidden="true" (click)="onStatus(user.id)"></i>
+            </div>
+            <ng-template #elseBlock>
+                <i class="fa fa-toggle-off text-danger md " aria-hidden="true" (click)="onStatus(user.id)"></i>
+            </ng-template>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

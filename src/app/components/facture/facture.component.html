@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]= "formAddFacture" > 
+        <!-- articles -->
+        <div class="text-center entete2">Enregistrement Facture</div>   
+
+        <div class="row">
+            <div class="form-group col-md-4" >
+                <label for="libele">Libele</label>
+                <input type="text" formControlName="libele" class="form-control" id="libele">
+            </div>
+            <div class="form-group col-md-4" >
+                <label for="acompte">Acompte</label>
+                <input type="number" formControlName="acompte" class="form-control" id="acompte">
+            </div>  
+            <div class="form-group col-md-4" >
+                <label for="nbrEcheanciers">nombre déchéancier</label>
+                <input type="number" formControlName="nbrEcheanciers" class="form-control" id="nbrEcheanciers">
+            </div>           
+        </div>               
+        <div class="form-group col-md-4" >
+            <button type="submit" class="btn btn-primary" (click)="onFacture()" >Suivant</button>       
+        </div>
+        
+    </form>
+</div>
+
+

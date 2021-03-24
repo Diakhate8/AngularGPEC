@@ -1,0 +1,41 @@
+<p>contrat works!</p>
+<div class="container">
+  <div class="row">
+      <div class="col-xs-1-12">
+        <pre>
+         {{contratPdf.id}}
+         Reference: reference
+         Numero contrat: {{contratPdf.numContrat}}
+         Date de création: {{contratPdf.createdAt}}
+        </pre>
+        <h3> {{contratPdf.libele}} </h3> 
+        <p> {{contratPdf.intitule}} </p>
+          <h5> {{contratPdf.arrete}}  </h5>
+          <h4>PREAMBULE</h4>
+        <p> {{contratPdf.preambule}}   </p>
+          <h4>ARTICLE-1:OBJET DU CONTRAT:</h4>
+        <p> {{contratPdf.article1}} </p>
+          <h4>ARTICLE-2: ARTICLE 2-MISE A DISPOSITION DES PRODUITS</h4>
+        <p> {{contratPdf.article2}} </p>
+          <h4>ARTICLE-4: MODALITE DE PAIEMENT </h4>
+        <p> {{contratPdf.article4}} </p>
+          <h4>ARTICLE-4: INTERETS DE RETARDS </h4>
+        <p> {{contratPdf.article4}} </p>  
+          <h4>ARTICLE-5: DUREE</h4>      
+        <p> {{contratPdf.article5}} </p>
+          <h4>ARTICLE-6: GARANTIES</h4>
+        <p> {{contratPdf.article6}} </p>
+          <h4>ARTICLE-7: OBLIGATION DES PARTIES</h4>
+        <p> {{contratPdf.article7}} </p>
+          <h4>ARTICLE-8: RESOLUTION DU CONTRAT </h4>
+        <p> {{contratPdf.article8}} </p>
+          <h4>ARTICLE-9: CONTENTIEUX ET JURIDICTIONS</h4>
+        <p> {{contratPdf.article9}} </p>
+          <h4>ARTICLE-10: CLAUSE PARTICILIERE</h4>
+        <p ng-bind="contratPdf.article10">  </p>
+        <pre>Fait à Dakar le 21/03/2021, en deux exemplaires, chaque partie reconnaissant avoir reçu le tien. 
+          Signature précédée de la mention « lu et approuvé »
+        </pre>
+      </div>
+  </div>
+</div>

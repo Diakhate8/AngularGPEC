@@ -1,0 +1,88 @@
+<!-- Sidebar -->
+<ul class="navbar-nav text-dark colorSide sidebar accordion" id="accordionSidebar">
+
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex text-dark bg-warning  align-items-center justify-content-center" 
+    routerLink="/app/service" id="log">
+    <div class="sidebar-brand-text mx-3 text-black"><span>Bokoko_Market</span> <sup>BM</sup></div>
+  </a>
+    <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+    <!-- Profile -->
+    <mat-nav-list>
+      <div class="profile-card">
+        <img class="rounded-circle " src="assets/img/profil.jpg"  >
+        <h5>Profil</h5>
+        <h6><span *ngIf="user" >{{user.username}}</span></h6>
+      </div>
+    </mat-nav-list>
+              <!-- Divider -->
+              <hr class="sidebar-divider">
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item " *ngIf="isAdmin() || isAssistant  ">
+        <a class="nav-link" routerLink="/app/service" routerLinkActive="active"  >
+          <i class="fas fa-home "></i>
+          <span>Home</span>
+        </a>
+      </li>
+              <!-- Divider  Service-->
+        <!-- Nav Item - Liste Users  Menu -->
+        <li class="nav-item"  *ngIf="isAdmin() ">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-list-ol "></i>
+            <span >Liste Users</span>
+          </a>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Users</h6>
+              <a class="collapse-item" routerLink="/app/listUsers" routerLinkActive="active" *ngIf="isAdmin()">Liste Users Service</a>
+              <a class="collapse-item" routerLink="/app/listclients" routerLinkActive="active" *ngIf="isAdmin()">Liste Clients</a>
+            </div>
+          </div>
+        </li>
+        <!-- Nav Item - AddUser -->
+        <li class="nav-item" *ngIf="isAdmin()">
+          <a class="nav-link" routerLink="/app/adduser" routerLinkActive="active" >
+            <i class="fas fa-user-plus "></i>
+            <span>Creer users</span>
+          </a>
+        </li>
+        <!-- Nav Item - -->
+        <li class="nav-item " *ngIf="isAdmin()">
+          <a class="nav-link "  routerLink="/app/addcontrat" routerLinkActive="active" >
+            <i class="fas fa-users "></i><span>Nouveau Contrat</span>
+          </a>
+        </li>
+        <!-- Nav Item -->
+        <li class="nav-item" *ngIf="isAdmin()">
+          <a class="nav-link" routerLink="/app/othercontrat" routerLinkActive="active" >
+            <i class="fas fa-hand-holding-usd "></i>
+            <span>Ajouter Contrat</span>
+          </a>
+        </li>
+        <!-- Nav Item - Ventes-->
+        <li class="nav-item" *ngIf="isAdmin()">
+          <a class="nav-link" routerLink="/app/ventes" routerLinkActive="active">
+            <i class="fas fa-fw fa-table "></i>
+            <span>Ventes</span>
+          </a>
+        </li>
+        <!-- Nav Item - Ventes-->
+        <li class="nav-item" *ngIf="isAdmin()">
+          <a class="nav-link" routerLink="/app/showclient" routerLinkActive="active">
+            <i class="fas fa-fw fa-table "></i>
+            <span>Rechercher Client</span>
+          </a>
+        </li>
+        <!-- End Divider  Service-->
+                               <!-- Divider - Agence-->
+    
+                            <!-- End Divider - Agence-->
+      <!-- Sidebar Toggler (Sidebar) -->
+     <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+     </div>
+</ul>
+<!-- End of Sidebar -->

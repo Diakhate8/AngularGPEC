@@ -1,0 +1,78 @@
+<div class=" row navbar navbar-expand navbar-light bg-gray topbar mb-4 static-top shadow  ml-auto text-center">
+  <ul class="navbar-nav  text-black-50">
+    <h1>Ajout utulisateurs</h1>
+  </ul>
+</div>
+<div class="container" id="bd">
+  <div class="row">
+      <form [formGroup]= "formAddUser">
+        <table id="tab1">
+            <tr>
+              <td>
+                  <div class="form-group md">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" class="form-control" id="username">
+                  </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" formControlName="password" class="form-control" id="password">
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="form-group">
+                  <label for="prenom">prenom</label>
+                  <input type="text" formControlName="prenom" class="form-control" id="prenom">
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <label for="nom">nom</label>
+                  <input type="text" formControlName="nom" class="form-control" id="nom" >
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="form-group">
+                  <label for="adresse">adresse</label>
+                  <input type="text" formControlName="adresse" class="form-control" id="adresse" >
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <label for="telephone">telephone</label>
+                  <input type="number" formControlName="telephone" class="form-control" id="telephone" >
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="form-group">
+                  <label for="email">email</label>
+                  <input type="email" formControlName="email" class="form-control"  id="email" >
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
+                  <label for="role">role</label>
+                  <select formControlName="role" class="form-control" id="role">
+                    <option value="{{role.id}}" *ngFor=" let role of roles" >{{role.libelle}}</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit"  class="btn btn-primary" (click)= "addUser() ">Enregistrer</button>
+              </td>
+            </tr>
+        </table>
+      </form>
+  </div>
+</div>
+

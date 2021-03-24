@@ -1,0 +1,21 @@
+.profile-card{
+  text-align: center ;
+  padding: 0 3px;
+  color: black;
+  img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%!important;
+  }
+}
+.colorSide{
+  background-color:255, 241, 118 ;
+}
+.nav-link{color:black !important;}
+.fas{color:black !important;}
+ul li a:hover{  color: red !important;}
+ul li a.active{  color: blue !important;}
+#log{
+  background-color: #5DBBF8;
+}

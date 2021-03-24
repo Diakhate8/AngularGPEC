@@ -1,0 +1,28 @@
+.login-box{  background-color: #5DBBF8;}
+.row{
+  box-shadow: 12px 12px 2px 1px rgb(212, 157, 241);
+}
+ul{
+  display:flex ;
+  flex-grow: 1;
+  justify-content: center;
+}
+nav{
+  display:flex ;
+  height: 10vh;
+  color: black;
+  align-items: baseline;
+  text-transform: uppercase;
+  padding-left: 1rem;
+}
+ul li {
+  list-style: none;
+}
+ul li a{
+  text-decoration: none;
+  margin-left: 2rem;
+}
+.logo{
+  flex-basis: 25%;
+  font-weight: bolder;
+}

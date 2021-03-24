@@ -1,0 +1,51 @@
+<section class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+          <!-- Nested Row within Card Body -->
+          <div class="row">
+            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+            <div class="col-lg-6">
+              <div class="p-5 login-box">
+                <div class="text-center">
+                  <h1 class="h4 mb-4 text-black">Connexion GEPEC</h1>
+                </div>
+                <div *ngIf="isLoginError" class="text-danger error-message">
+                  <i class="material-icons">error</i> Incorrect username or password
+                </div>
+                <mat-spinner *ngIf="showSpinner"></mat-spinner>
+                <form [formGroup]= "formConexion">
+                  <div class="form-group">
+                    <label for="username" class="text-gray-900">Username</label>
+                    <input type="text" formControlName="username" class="form-control"
+                           id="username" placeholder="Enter your username">
+                    .  </div>
+                  <div class="form-group">
+                    <label for="password" class="text-gray-900">Password</label>
+                    <input type="password"  class="form-control"
+                           placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+                           formControlName="password" id="password">
+                    <button class="float-right text-black" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </div>
+                  <button type="submit"  class="btn btn-primary" (click)= "onConexion()">Connecter</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Footer -->
+<footer class="sticky-footer bg-gradient-light mt-5">
+  <div class="container my-auto">
+    <div class="copyright text-center my-auto ">
+      <span class="textFooter">Copyright &copy; Your Website 2020</span>
+    </div>
+  </div>
+</footer>
+<!-- End of Footer -->
