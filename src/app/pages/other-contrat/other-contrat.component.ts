@@ -11,7 +11,7 @@ import { Client } from 'src/app/models/client';
 export class OtherContratComponent implements OnInit {
 
   formSearch: FormGroup;
-  objectClient: {numClient: string, cni: string };
+  objectClient: {numero: string, cni: string };
   
   constructor(private fb: FormBuilder, private router: Router) { }
   

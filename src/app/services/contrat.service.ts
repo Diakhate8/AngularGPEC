@@ -18,8 +18,8 @@ export class ContratService {
     return this.httpClient.post<any>(`${environment.apiUrl}/api/addcontrat`, data);
   }
 
-   // enregistrement de contrat pour un client existant deja
-   addOtherContrat(data: any) {
+  // enregistrement de contrat pour un client existant deja
+  addOtherContrat(data: any) {
     return this.httpClient.post<any>(`${environment.apiUrl}/api/other/contrat`, data);
   }
 }
