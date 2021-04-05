@@ -11,7 +11,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthentificationService {
   constructor(private httpClient: HttpClient) {
     // recuperation et affectation du userConnecter dans localstorage
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User>(
+      JSON.parse(localStorage.getItem('currentUser')   )
+    );
   }
     // recuperation des valeurs du user connecter
   public get currentUserValue(): User {

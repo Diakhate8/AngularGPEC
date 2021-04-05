@@ -1,34 +1,38 @@
 <div class="container">
     <form [formGroup]= "formAddArticle" > 
         <!-- articles -->
-        <div class="row text-center entete2">Ajouter des articles</div>   
-
+        <div class="text-center entete2">Enregistrement des articles</div>   
         <div class="row">
-            <div class="form-group col-md-4"  >
+            <div class="form-group col-md-6"  >
                 <label for="article">Article</label>
                 <input type="text" formControlName="article" class="form-control" id="article">
             </div>
-            <div class="form-group col-md-4" >
+            <div class="form-group col-md-2" >
                 <label for="prixU">Prix unitaire</label>
                 <input type="number" formControlName="prixU" class="form-control" id="prixU">
             </div>  
-            <div class="form-group col-md-4" >
+            <div class="form-group col-md-2" >
                 <label for="nbr">nbr</label>
                 <input type="number" formControlName="nbr" class="form-control" id="nbr">
             </div>           
         </div>     
         <div class="row">        
             <div class="form-group col-md-4" >
-                <button type="submit" class="btn btn-primary" (click)="annuler()" >Annuler</button>       
+                <button type="submit" class="btn btn-danger" (click)="annuler()" >Annuler</button>       
             </div>
             <div class="form-group col-md-4" >
-                <button type="submit" class="btn btn-warning" (click)="onAdd()" >Ajouter</button>       
+                <button type="submit" class="btn btn-green" (click)="onAdd()" >Ajouter</button>       
             </div>
             <div class="form-group col-md-4" >
                 <button type="submit" class="btn btn-primary" (click)="onArticle()" >Suivant</button>       
             </div>
         </div>
     </form>
+    <div class="row" *ngIf="tabArticle">
+        <pre *ngFor="let produit of tabArticle">
+            {{produit.article}}<br>
+        </pre>
+    </div>
 </div>
 
 

@@ -13,15 +13,15 @@ export class VenteComponent implements OnInit {
   donnees = [];
   constructor(private venteServ: VenteService) { }
   listData: MatTableDataSource<any>;
-  displayedColumns: string[] = [ 'date', 'numeroClient', 'client', 'articles', 'prenomR', 'nomR', 'telephoneR',
-    'mode', 'solde', 'frais', 'commission'];
+  displayedColumns: string[] = [ 'date', 'numContrat', 'reference','client', 
+    'articles', 'nombre','montant', 'acompte','reliquat'];
     
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
     ngOnInit() {
       this.venteServ.getVentes().subscribe(data => {
         this.listeVente = data;
         console.log(this.listeVente);
-
+        
         this.donnees.push(this.donnees);
         this.listeVente = data;
         // console.log(this.listeVente['createdAt']);

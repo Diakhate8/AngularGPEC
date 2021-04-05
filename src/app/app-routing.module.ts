@@ -16,6 +16,9 @@ import { ModaliteComponent } from './components/modalite/modalite.component';
 import { ContratComponent } from './pages/contrat/contrat.component';
 import { VenteComponent } from './pages/vente/vente.component';
 import { OtherContratComponent } from './pages/other-contrat/other-contrat.component';
+import { EcheancierComponent } from './components/echeancier/echeancier.component';
+import { FormDialogComponent } from './pages/form-dialog/form-dialog.component';
+import { FormClientComponent } from './components/form-client/form-client.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -35,7 +38,12 @@ const routes: Routes = [
       { path: 'contratpdf', component: ContratComponent },
       { path: 'showclient', component: FindClientComponent },
       { path: 'othercontrat', component: OtherContratComponent },
-      { path: 'ventes', component: VenteComponent }
+      { path: 'ventes', component: VenteComponent } ,
+      { path: 'echeancier', component: EcheancierComponent },
+      { path: 'form', component: FormClientComponent }
+
+
+
     ]
   },
   { path: 'pageNotFoud', component: NotFoundComponent },

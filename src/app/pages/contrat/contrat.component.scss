@@ -1,5 +1,14 @@
 *{
     color: black;
+    .maj{
+        text-transform:uppercase;
+    }
+    .min{
+        text-transform:lowercase;
+    }
+    .majmin{
+        text-transform: capitalize;
+    }
 }
 h3{
     text-align: center;
@@ -8,4 +17,77 @@ h3{
 p{
     color: black;
     font-size: 14px;
+}
+ol,li{
+    color: black;
+}
+
+#attestation {
+    margin: auto;
+    padding: 2 ;
+    h1,h2{
+        text-align: center;
+        margin-top: 2px;
+    }
+    .sub{
+        float: right;
+        text-align: right;
+    }
+    
+}
+#facture{
+    .r1{
+        line-height: 1.1em;   
+        .logo{
+            font-family: 'Calibri';
+            margin-top: 5px;
+            .lettrine{
+                font-size:2em ;
+                line-height: 1.2em; 
+            }
+        }
+        .bm{
+            font-size: 12px;
+        }
+    }
+    .r2 {
+        font-size:14px;
+        margin-top: 10px;
+    }
+    .r3{
+        font-size:14px;
+        margin-top: 10px;
+    }
+    h2{
+        background:rgba(168, 168, 168, 0.726);
+        width: 100%;
+        text-align: center;
+        float: center;
+        .nbFact{
+            font-size:16px;
+        }
+    }   
+    table,th,tr,td{
+        border:solid grey 1px;
+        font-size:15px;
+        text-align: center; padding:0 1;
+        th{
+            font-size:16px;
+            text-align: center;
+            padding:0;
+            background:rgb(31, 30, 30);
+        }
+        .td1{
+            text-align: left;
+        }
+        
+    }
+    table{
+        width: 95%;
+        margin: auto;
+        float: center;
+        .th1{width: 50%;}.th2{width: 10%;}.th3{width: 20%;}.th4{width: 20%;}
+    }
+   
+    
 }

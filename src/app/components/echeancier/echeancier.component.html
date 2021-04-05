@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="text-center entete2"><h2>Modalité de paiement</h2></div>            
+    <div class="text-center entete2"><h1>Mes echeanciers</h1></div>            
     <div class="row justify-content-center mt-2">
             <!-- Modalite de paiement -->
         <form [formGroup]= "formAddModalite" > 
@@ -174,15 +174,12 @@
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit"  class="btn btn-primary" (click)="page1()" >Modifier Client</button>       
-                    </td>
-                    <td>
-                        <button type="submit"  class="btn btn-primary" (click)="onEcheance()" >Suivant</button>       
-                    </td>
-                    <td>
-                    </td>
-                    <td>
                         <button type="submit"  class="btn btn-primary" (click)="otherContrat()" >Ajouter Vente</button>       
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <button type="submit"  class="btn btn-primary" (click)="onEcheance()">Nouvelle vente</button>       
                     </td>
                 </tr>
             </table>

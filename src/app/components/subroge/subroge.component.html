@@ -1,40 +1,36 @@
-<div class="section-1-container section-container">
- <div class="container">
-    <div class="row">
-      <div class="col-10 offset-1 div-wrapper d-flex justify-content-center align-items-center">
-        <div class="div-to-align">
-         <form [formGroup]= "formAddSubroge" > 
-            <div class="text-center entete2"><h1>Enregistrement du Subrogé</h1></div>        
+<div class="container">
+        <form [formGroup]= "formAddSubroge" > 
+            <div class=" text-center  entete2">Enregistrement du subrogé</div>
             <div class="row">
-                <div class="form-group col-">
+                <div class="form-group col-md-3">
                     <label for="prenom">Prenom </label>
                     <input type="text" formControlName="prenom" class="form-control" id="prenom">
                 </div> 
-                <div class="form-group col-">
+                <div class="form-group col-md-3">
                     <label for="nom">Nom </label>
                     <input type="text" formControlName="nom" class="form-control" id="nom">
                 </div> 
-                <div class="form-group col-">
+                <div class="form-group col-md-3">
                     <label for="dateNaiss">Date de naissance </label>
                     <input type="date" formControlName="dateNaiss" class="form-control" id="dateNaiss">
                 </div>
-                <div class="form-group col-">
+                <div class="form-group col-md-3">
                     <label for="lieuNaiss">Lieu de naissance </label>
                     <input type="text" formControlName="lieuNaiss" class="form-control" id="lieuNaiss">
                 </div>
-                <div class="form-group col-">
+                <div class="form-group col-md-3">
                     <label for="telephone">Telephone </label>
                     <input type="text" formControlName="telephone" class="form-control" id="telephone" >
                 </div> 
-                <div class="form-group col-">
+                <div class="form-group col-md-3">
                     <label for="cni">CNI </label>
                     <input type="text" formControlName="cni" class="form-control" id="cni" >
                 </div>           
-                <div class="form-group col-">
+                <div class="form-group col-md-3">
                     <label for="dateDCni">Délivrance CNI  </label>
                     <input type="date" formControlName="dateDCni" class="form-control" id="dateDCni">
                 </div> 
-                <div class="form-group col-">
+                <div class="form-group col-md-3">
                     <label for="dateECni"> Expiration CNI </label>
                     <input type="date" formControlName="dateECni" class="form-control" id="dateECni">
                 </div>
@@ -44,11 +40,8 @@
                 </div>           
             </div>         
             <button type="submit"  class="btn btn-primary" (click)="onSubroge()" >Suivant</button>               
-         </form>
-        </div>
-      </div>
-    </div>   
- </div>
+        </form>
+          
 </div>
 
 

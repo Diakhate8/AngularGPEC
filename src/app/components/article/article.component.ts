@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
   
   tabArticle: any;
   formAddArticle: FormGroup;
-  private fieldArray: Array<any> = [];
+  public fieldArray: Array<any> = [];
 
   constructor(private fb: FormBuilder,private router: Router) { }
   
@@ -37,11 +37,16 @@ export class ArticleComponent implements OnInit {
     this.onReset();
   }
 
-	
   // ajout des articles dans le tableau
   onAdd(){
-    const ARTICLE = this.formAddArticle.value;
-      this.fieldArray.push(ARTICLE);
+    const ARTICLE =  {
+          article: this.formAddArticle.value.article,
+          prixU: this.formAddArticle.value.prixU,
+          nbr: this.formAddArticle.value.nbr,
+          prixT: this.formAddArticle.value.prixU*this.formAddArticle.value.nbr           
+        };
+      this.tabArticle=this.fieldArray.push(ARTICLE);
+      console.log(this.tabArticle);
       this.onReset();
   }
 
@@ -62,6 +67,6 @@ export class ArticleComponent implements OnInit {
   //set iitem article in localStorage
   localStorageAddData(data){
     localStorage.setItem('currentArticle', JSON.stringify(data));
-    return this.router.navigate(['/app/addecheancier']);    
+    return this.router.navigate(['/app/echeancier']);    
   }
 }

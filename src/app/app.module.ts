@@ -11,6 +11,10 @@ import { AjoutUserService } from './services/ajout-user.service';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserService } from './services/user.service';
+import { MatGridListModule} from '@angular/material/grid-list';
+import { MatStepperModule} from '@angular/material/stepper';
+
+
 // last import
 import {
   ErrorStateMatcher, MAT_LABEL_GLOBAL_OPTIONS, MatNativeDateModule,
@@ -53,6 +57,15 @@ import { VenteComponent } from './pages/vente/vente.component';
 import { VenteService } from './services/vente.service';
 import { OtherContratComponent } from './pages/other-contrat/other-contrat.component';
 import { FindClientComponent } from './components/find-client/find-client.component';
+import { EcheancierComponent } from './components/echeancier/echeancier.component';
+import { FormDialogComponent } from './pages/form-dialog/form-dialog.component';
+import { FormClientComponent } from './components/form-client/form-client.component';
+import { ClientService } from './services/forms/client.service';
+import { SubrogeService } from './services/forms/subroge.service';
+import { EcheancierService } from './services/forms/echeancier.service';
+import { FactureService } from './services/forms/facture.service';
+import { ArticleService } from './services/forms/article.service';
+
 
 PdfMakeWrapper.setFonts(pdfFonts);
 
@@ -82,7 +95,10 @@ PdfMakeWrapper.setFonts(pdfFonts);
     ContratComponent,
     VenteComponent,
     OtherContratComponent,
-    FindClientComponent
+    FindClientComponent,
+    EcheancierComponent,
+    FormDialogComponent,
+    FormClientComponent
   ],
   imports: [
     BrowserModule,
@@ -98,13 +114,15 @@ PdfMakeWrapper.setFonts(pdfFonts);
     MatButtonModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatDatepickerModule,
     MatTableModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatProgressSpinnerModule
-
-
+    MatProgressSpinnerModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatStepperModule,
+    
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
@@ -120,6 +138,13 @@ PdfMakeWrapper.setFonts(pdfFonts);
     UserService,
     VenteService,
     DecodeJwtTokenService,
+    MatDatepickerModule,
+    ClientService,
+    SubrogeService,
+    ArticleService,
+    EcheancierService,
+    FactureService
+
   ],
   bootstrap: [AppComponent]
 })

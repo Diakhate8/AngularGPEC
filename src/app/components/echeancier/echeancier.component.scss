@@ -2,7 +2,7 @@
     color:black;
   }
  
-  input{
+  input,.form-control{
     height: 25px;
     width: 100%;
     border: solid black 1px !important;
@@ -19,11 +19,10 @@
   .entete2{
     padding: 0,0,0,0;
     float: center;
-    color:white;
     font-size:20px;
     margin-top:10px;
     margin-bottom: 6px;
-    background: linear-gradient(90deg,rgb(28, 83, 156)0%,rgba(9,9,121,1)35%, rgb(0,212,255,1)100%);
+    background-color: yellow;
   }
   mat-form-field{
     height:2px !important;

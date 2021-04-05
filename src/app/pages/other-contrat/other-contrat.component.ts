@@ -1,3 +1,4 @@
+import { ContratService } from './../../services/contrat.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,25 +12,30 @@ import { Client } from 'src/app/models/client';
 export class OtherContratComponent implements OnInit {
 
   formSearch: FormGroup;
-  objectClient: {numero: string, cni: string };
+  dataClient: Client;
   
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder,private contratServ: ContratService, private router: Router) { }
   
   ngOnInit() {
     this.formSearch = this.fb.group(
       {  // Infos client
-        numero: new FormControl(''),
-        nin: new FormControl('')
+        numero: new FormControl('')
       }
     );
   }
 
   onSearch(){
     const CLIENT = {
-      numero: this.formSearch.value.numero,
-      cni: this.formSearch.value.nin
+      numero: this.formSearch.value.numero
     };
-    console.log(CLIENT ) ;
+    this.contratServ.getClient(CLIENT).subscribe(
+          data => {
+            this.dataClient = data; console.log(this.dataClient);
+          },
+          error =>{
+            alert('Pas de client trover pour ce numero')
+          }
+    );
     this.localStorageAddData(CLIENT);
   }
 

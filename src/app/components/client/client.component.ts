@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/models/client';
 
@@ -14,19 +14,23 @@ export class ClientComponent implements OnInit {
   formAddClient: FormGroup;
   objectClient: Client;
   ngOnInit() {
+        // Infos client
     this.formAddClient = this.fb.group(
-      {  // Infos client
-        numero: new FormControl(''),
-        prenom: new FormControl(''),
-        nom: new FormControl(''),
-        dateNaiss: new FormControl(''),
-        lieuNaiss: new FormControl(''),
-        cni: new FormControl(''),
-        dateDCni: new FormControl(''),
-        dateECni: new FormControl(''),
-        domicile: new FormControl(''),
-        adresse: new FormControl(''),
-        telephone: new FormControl()        
+      {  
+        hideRequired: false,
+        floatLabel: 'auto',
+        // Infos client
+        numero: new FormControl('', Validators.required),
+        prenom: new FormControl('', Validators.required),
+        nom: new FormControl('', Validators.required),
+        dateNaiss: new FormControl('', Validators.required),
+        lieuNaiss: new FormControl('', Validators.required),
+        cni: new FormControl('', Validators.required),
+        dateDCni: new FormControl('', Validators.required),
+        dateECni: new FormControl('', Validators.required),
+        domicile: new FormControl('', Validators.required),
+        adresse: new FormControl('', Validators.required),
+        telephone: new FormControl('', Validators.required),        
       }
     );
   }

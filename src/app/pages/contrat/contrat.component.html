@@ -1,41 +1,130 @@
 <p>contrat works!</p>
 <div class="container">
   <div class="row">
-      <div class="col-xs-1-12">
-        <pre>
-         {{contratPdf.id}}
-         Reference: reference
-         Numero contrat: {{contratPdf.numContrat}}
-         Date de création: {{contratPdf.createdAt}}
-        </pre>
-        <h3> {{contratPdf.libele}} </h3> 
-        <p> {{contratPdf.intitule}} </p>
-          <h5> {{contratPdf.arrete}}  </h5>
-          <h4>PREAMBULE</h4>
-        <p> {{contratPdf.preambule}}   </p>
-          <h4>ARTICLE-1:OBJET DU CONTRAT:</h4>
-        <p> {{contratPdf.article1}} </p>
-          <h4>ARTICLE-2: ARTICLE 2-MISE A DISPOSITION DES PRODUITS</h4>
-        <p> {{contratPdf.article2}} </p>
-          <h4>ARTICLE-4: MODALITE DE PAIEMENT </h4>
-        <p> {{contratPdf.article4}} </p>
-          <h4>ARTICLE-4: INTERETS DE RETARDS </h4>
-        <p> {{contratPdf.article4}} </p>  
-          <h4>ARTICLE-5: DUREE</h4>      
-        <p> {{contratPdf.article5}} </p>
-          <h4>ARTICLE-6: GARANTIES</h4>
-        <p> {{contratPdf.article6}} </p>
-          <h4>ARTICLE-7: OBLIGATION DES PARTIES</h4>
-        <p> {{contratPdf.article7}} </p>
-          <h4>ARTICLE-8: RESOLUTION DU CONTRAT </h4>
-        <p> {{contratPdf.article8}} </p>
-          <h4>ARTICLE-9: CONTENTIEUX ET JURIDICTIONS</h4>
-        <p> {{contratPdf.article9}} </p>
-          <h4>ARTICLE-10: CLAUSE PARTICILIERE</h4>
-        <p ng-bind="contratPdf.article10">  </p>
-        <pre>Fait à Dakar le 21/03/2021, en deux exemplaires, chaque partie reconnaissant avoir reçu le tien. 
-          Signature précédée de la mention « lu et approuvé »
-        </pre>
+    <button type="submit" class=" btn btn-sm btn-primary shadow-sm" (click)="generateContrat()">
+      <i class="fas fa-download fa-sm text-white-50"></i> Generate Contrat
+    </button>
+  </div>
+  <!-- Contrat -->
+  <div class="row">
+      <pre>Reference: {{contratPdf.reference}}<br>Numero contrat: {{contratPdf.numContrat}}<br>Date de création: {{contratPdf.createdAt}}
+      </pre>
+      <div class="col-xs-1-12" id="contrat">
+                    <h3 class="maj"> {{contratPdf.libele}} </h3> 
+                    <h4>INTITULE:</h4>
+        <p style="white-space:pre-line;"> {{contratPdf.intitule}} </p>
+                    <h5 style="text-align: center;" > {{contratPdf.arrete}}  </h5>
+                    <h4>PREAMBULE:</h4>
+        <p style="white-space:pre-line;"> {{contratPdf.preambule}} </p>
+                    <h4>ARTICLE-1:OBJET DU CONTRAT:</h4>
+        <p style="white-space:pre-line;"> {{contratPdf.article1}} </p>
+                    <h4>ARTICLE-2: ARTICLE 2-MISE A DISPOSITION DES PRODUITS</h4>
+        <p style="white-space:pre-line;"> {{contratPdf.article2}} </p>
+                    <h4>ARTICLE-3: MODALITE DE PAIEMENT </h4>
+        <p style="white-space:pre-line;"> {{contratPdf.article3}} </p>
+                    <h4>ARTICLE-4: INTERETS DE RETARDS </h4>
+        <p style="white-space:pre-line;"> {{contratPdf.article4}} </p>  
+                    <h4>ARTICLE-5: DUREE</h4>      
+        <p style="white-space:pre-line;"> {{contratPdf.article5}} </p>
+                    <h4>ARTICLE-6: GARANTIES</h4>
+        <p style="white-space:pre-line;"> {{contratPdf.article6}} </p>
+                    <h4>ARTICLE-7: OBLIGATION DES PARTIES</h4>
+        <p style="white-space:pre-line;"> {{contratPdf.article7}} </p>
+                    <h4>ARTICLE-8: RESOLUTION DU CONTRAT </h4>
+        <p style="white-space:pre-line;"> {{contratPdf.article8}} </p>
+                    <h4>ARTICLE-9: CONTENTIEUX ET JURIDICTIONS</h4>
+        <p style="white-space:pre-line;"> {{contratPdf.article9}} </p>
+                    <h4>ARTICLE-10: CLAUSE PARTICILIERE</h4>
+        <p style="white-space:pre-line;">{{contratPdf.article10}}</p><br>
+        <p><strong>Monsieur GUEYE Pape Ndiankou</strong><span class="sub majmin">Mr(Mme)<strong>{{client.prenom}} {{client.nom}}</strong></span></p>
+        <p>Signature précédée de la mention « lu et approuvé »</p>
       </div>
+  </div>
+   <!-- End Contrat -->
+     <!-- Attestation -->
+  <div class="row mt-2">
+    <div id="attestation">
+      <h1>BOKOKO MARKET</h1><br>
+      <h2>ATTESTATION DE LIVRAISON</h2>
+
+      <p>Je soussigné Monsieur GUEYE Pape Ndiankou représentant de la société BOKOKO MARKET certifie, d’une part et par la présente, avoir livré, au nom et pour le compte de ladite société,
+        <br>Le {{currentDate| date:'dd-MM-yyyy'}}
+      </p>
+        <ul *ngFor=" let commande of articles">
+          <li>{{commande.article}}</li> 
+        </ul>
+      <p>D’autre part Monsieur(Madame) <span class="majmin">{{client.prenom}} {{client.nom}}</span>, reconnait aussi que ledit bien a été contrôlé et 
+        réceptionné sans aucune anomalie.<br>Fait à Dakar,<br>Le {{currentDate| date:'dd-MM-yyyy'}}
+      </p>
+      <p>
+        Heure d’arrivée au local du client :<br>
+        Heure de départ du local du client :<br>
+      </p><br>
+      <p><strong>Monsieur GUEYE Pape Ndiankou</strong><span class="sub">Mr(Mme) <span class="majmin"><strong>{{client.prenom}} {{client.nom}}</strong></span></span></p>
+      <p>Signature précédée de la mention « lu et approuvé »</p>
+    </div>
+
+  </div>
+  <!-- End Attestation -->
+  <br><br><br><br>
+      <!-- Facture -->
+  <div id="facture" *ngFor="let facture of factures" > 
+    <div class="justify-content-center card-body p-0">
+        <div class="row r1">
+            <div class="col-md-4 logo">
+               <span class="lettrine">B</span>OKOKO<br> 
+               <span class="lettrine">M</span>ARKET
+            </div>
+            <div class="col-md-4 bm">  <br>              
+                Cité Avion, Ouakam<br>Dakar, Sénégal<br>Tél : +221783832672 / 0033752956783<br>
+                Mail : Pape-99@hotmail.com
+            </div>       
+            <div class="col-md-4"> </div>   
+        </div><br><br>
+        <div class="row mt-2">
+            <div class="col-md-7"> </div>   
+            <div class="col-md-5 r2">                
+                Date de facture: {{currentDate| date:'dd-MM-yyyy'}}<br>
+                Tel C: {{client.telephone}}<br>
+                Tel S: {{client.telephone}}<br>
+            </div>
+        </div><br><br>
+        <h2>FACTURE N°<span class="nbFact">{{facture.numFacture}} /BM</span></h2>   
+        <div class="row mt-2 r3">
+          <pre>
+            Reference: {{facture.reference}}<br>
+            Facture A : Monsieur(Madame) <span class="majmin">{{client.prenom}} {{client.nom}} </span>
+            Adresse : {{client.adresse}} 
+            Devise :  <strong>F CFA</strong>
+          </pre>
+        </div>
+        <div class="row mt-2">        
+          <table class="table mt-1">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" class="th1">Désignation</th>
+                <th scope="col" class="th3">Prix Unitaire</th>
+                <th scope="col" class="th2">Nombre</th>
+                <th scope="col" class="th4">Prix Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor=" let commande of articles">
+                <td class="td1 majmin">{{commande.article}}</td><td>{{commande.prixU}}</td><td>{{commande.nbr}}</td><td>{{commande.prixT}}</td>
+              </tr>
+              <tr>
+                <td class="td1 majmin">Total net à payer</td><td colspan="3">{{facture.montAVerser}}</td>
+              </tr>
+              <tr>
+                <td class="td1 majmin"><strong>Acompte</strong></td><td colspan="3">{{facture.acompte}}</td>
+              </tr>
+              <tr>
+                <td class="td1 majmin"><strong>Reste à payer</strong></td>
+                <td colspan="3">{{facture.resteAPayer}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ContratService } from 'src/app/services/contrat.service';
 
 @Component({
   selector: 'app-find-client',
@@ -8,32 +9,38 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./find-client.component.scss']
 })
 export class FindClientComponent implements OnInit {
-  
+
   formSearch: FormGroup;
-  objectClient: {numClient: string, cni: string };
-  
-  constructor(private fb: FormBuilder, private router: Router) { }
-  
+  objectClient: { numero: string };
+
+  constructor(private fb: FormBuilder, private contratServ: ContratService, private router: Router) { }
+
   ngOnInit() {
     this.formSearch = this.fb.group(
       {  // Infos client
-        numero: new FormControl(''),
-        nin: new FormControl('')
+        numero: new FormControl('')
       }
     );
   }
 
-  onSearch(){
+  onSearch() {
     const CLIENT = {
       numero: this.formSearch.value.numero,
-      cni: this.formSearch.value.nin
     };
 
-    console.log(CLIENT ) ;
+    this.contratServ.getClient(CLIENT).subscribe(data => {
+       console.log(data);
+      // tslint:disable-next-line:no-shadowed-variable
+    //  this.contratServ.getAllUser().subscribe(data => {
+       // this.dataUser = data;
+       // console.log(this.dataUser);
+      });
+   // });
+    // console.log(CLIENT);
   }
 
 
 
 
-  
+
 }

@@ -1,99 +1,63 @@
-<div class="container">
-  <h1>Liste des transactions</h1>
-  <div class="row"  >
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event.target.value)"
-             placeholder="Filter">
-    </mat-form-field>
-  </div>
-  <div class="row"  >
-    <div style="overflow:auto;">
-      <div class="mat-elevation-z8" >
+<div class="mat-elevation-z8" >
       <mat-divider></mat-divider>
-        <table mat-table [dataSource]=" listData" >
+    <table mat-table [dataSource]=" listData"  id="table">
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
           <mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
+
           <ng-container matColumnDef="date">
             <mat-header-cell *matHeaderCellDef  >Mois </mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.createdAt |   date:'dd-MM-yyyy hh:mm:ss '}}
+              {{listeVente.createdAt | date:'dd-MM-yyyy'}}
+            </mat-header-cell>
+          </ng-container>
+          <ng-container matColumnDef="numContrat">
+            <mat-header-cell *matHeaderCellDef  >N° Contrat</mat-header-cell>
+            <mat-header-cell *matCellDef="let listeVente">
+              {{listeVente.numContrat}}
+            </mat-header-cell>
+          </ng-container>
+          <ng-container matColumnDef="reference">
+            <mat-header-cell *matHeaderCellDef  >Reference</mat-header-cell>
+            <mat-header-cell *matCellDef="let listeVente">
+              {{listeVente.reference}}
             </mat-header-cell>
           </ng-container>
           <ng-container matColumnDef="client" >
-            <mat-header-cell *matHeaderCellDef>Client</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Client</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.prenom}} {{listeVente.prenom}}
+              {{listeVente.client.prenom}} {{listeVente.client.nom}}
             </mat-header-cell>
-          </ng-container>
-          <ng-container matColumnDef="numeroClient">
-            <mat-header-cell *matHeaderCellDef  >N°Client</mat-header-cell>
-            <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.acompte}}
-            </mat-header-cell>
-          </ng-container>
+          </ng-container> 
           <ng-container matColumnDef="articles">
             <mat-header-cell *matHeaderCellDef  >Articles</mat-header-cell>
-            <mat-header-cell *matCellDef="let listeVente">
-              <!-- {{//listeVente.//article}} -->
+            <mat-header-cell *matCellDef="let listeVente" >
+              {{listeVente.commandes}}
             </mat-header-cell>
           </ng-container>
-          <ng-container matColumnDef="pieceE">
-            <mat-header-cell *matHeaderCellDef>N°Facture</mat-header-cell>
+          <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.numFacture}}
+              {{listeVente.factures}}
             </mat-header-cell>
           </ng-container>
-          <ng-container matColumnDef="prenomR" >
-            <mat-header-cell *matHeaderCellDef>Montant versé</mat-header-cell>
+          <ng-container matColumnDef="montant">
+            <mat-header-cell *matHeaderCellDef>Prix de vente</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.montVerse }}
+              {{listeVente.factures}}
             </mat-header-cell>
           </ng-container>
-          <ng-container matColumnDef="nomR">
-            <mat-header-cell *matHeaderCellDef  >Reste A paayer</mat-header-cell>
+          <ng-container matColumnDef="acompte" >
+            <mat-header-cell *matHeaderCellDef>Acompte</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.resteAPayer}}
+              {{listeVente.factures.acompte}}
             </mat-header-cell>
           </ng-container>
-          <ng-container matColumnDef="telephoneR">
-            <mat-header-cell *matHeaderCellDef  >Reference</mat-header-cell>
+          <ng-container matColumnDef="reliquat" >
+            <mat-header-cell *matHeaderCellDef>Reste a payer</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.reference 	}}
+              {{listeVente.factures.resteAPayer}}
             </mat-header-cell>
           </ng-container>
-          <ng-container matColumnDef="pieceR">
-            <mat-header-cell *matHeaderCellDef  > NIN<br>Receveur</mat-header-cell>
-            <mat-header-cell *matCellDef="let listeVente">
-              <!-- {{//listeVente.//ninCor}} &nbsp; -->
-            </mat-header-cell>
-          </ng-container>
-          <ng-container matColumnDef="solde">
-            <mat-header-cell *matHeaderCellDef  >Solde</mat-header-cell>
-            <mat-header-cell *matCellDef="let listeVente">
-              <!-- {{//listeVente.//solde}} -->
-            </mat-header-cell>
-          </ng-container>
-          <ng-container matColumnDef="frais">
-            <mat-header-cell *matHeaderCellDef  >FRAIS</mat-header-cell>
-            <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.frais}}
-            </mat-header-cell>
-          </ng-container>
-          <ng-container matColumnDef="commission">
-            <mat-header-cell *matHeaderCellDef >Commission</mat-header-cell>
-            <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.partAgence}}
-            </mat-header-cell>
-          </ng-container>
-          <ng-container matColumnDef="mode">
-            <mat-header-cell *matHeaderCellDef  >Mode</mat-header-cell>
-            <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.statut}}
-            </mat-header-cell>
-          </ng-container>
-        </table>
-      <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
-    </div>
-    </div>
-  </div>
+    </table>
+
 </div>

@@ -20,6 +20,11 @@ export class ContratService {
 
   // enregistrement de contrat pour un client existant deja
   addOtherContrat(data: any) {
-    return this.httpClient.post<any>(`${environment.apiUrl}/api/other/contrat`, data);
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/contrat/other`, data);
+  }
+ 
+  // rechercher un client
+  getClient(data: any) {
+    return this.httpClient.post<any>(`${environment.apiUrl}/api/showclient`, data );
   }
 }
