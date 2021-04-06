@@ -50,7 +50,6 @@ import { SubrogeComponent } from './components/subroge/subroge.component';
 import { ArticleComponent } from './components/article/article.component';
 import { FactureComponent } from './components/facture/facture.component';
 import { AddContratComponent } from './pages/add-contrat/add-contrat.component';
-import { ModaliteComponent } from './components/modalite/modalite.component';
 import { ContratService } from './services/contrat.service';
 import { ContratComponent } from './pages/contrat/contrat.component';
 import { VenteComponent } from './pages/vente/vente.component';
@@ -91,7 +90,6 @@ PdfMakeWrapper.setFonts(pdfFonts);
     ArticleComponent,
     FactureComponent,
     AddContratComponent,
-    ModaliteComponent,
     ContratComponent,
     VenteComponent,
     OtherContratComponent,

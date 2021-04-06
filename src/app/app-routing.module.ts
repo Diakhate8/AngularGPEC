@@ -12,12 +12,10 @@ import { SubrogeComponent } from './components/subroge/subroge.component';
 import { FactureComponent } from './components/facture/facture.component';
 import { ArticleComponent } from './components/article/article.component';
 import { AddContratComponent } from './pages/add-contrat/add-contrat.component';
-import { ModaliteComponent } from './components/modalite/modalite.component';
 import { ContratComponent } from './pages/contrat/contrat.component';
 import { VenteComponent } from './pages/vente/vente.component';
 import { OtherContratComponent } from './pages/other-contrat/other-contrat.component';
 import { EcheancierComponent } from './components/echeancier/echeancier.component';
-import { FormDialogComponent } from './pages/form-dialog/form-dialog.component';
 import { FormClientComponent } from './components/form-client/form-client.component';
 
 const routes: Routes = [
@@ -34,7 +32,6 @@ const routes: Routes = [
       { path: 'addsubroge', component: SubrogeComponent },
       { path: 'addfacture', component: FactureComponent },
       { path: 'addarticle', component: ArticleComponent },
-      { path: 'addecheancier', component: ModaliteComponent },
       { path: 'contratpdf', component: ContratComponent },
       { path: 'showclient', component: FindClientComponent },
       { path: 'othercontrat', component: OtherContratComponent },

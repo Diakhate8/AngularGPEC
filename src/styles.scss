@@ -3,6 +3,16 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.entete2{
+    font-weight: bolder;
+    float: center;
+    color:white;
+    font-size:20px;
+    margin-top:10px;
+    margin-bottom: 6px;
+    background: linear-gradient(90deg,rgb(81, 145, 228)0%,rgb(86, 86, 182)35%, rgb(0,212,255,1)100%);
+}
+
 .normal-form{margin: 5px;}
 .controls-container{
     width: 100%;

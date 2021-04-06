@@ -65,9 +65,10 @@
                 <input type="text" formControlName="adresse" class="form-control" id="adresse" >
             </div>
         </div>
-        <mat-dialog-actions>
+        <div class="button-row button">
             <button class="mat-raised-button"(click)="close()">annuler</button>
+            <button class="mat-raised-button mat-warn"(click)="onAddSub()" >Ajouter Subroge</button>  
             <button class="mat-raised-button mat-primary"(click)="onClient()" >Suivant</button>  
-        </mat-dialog-actions>    
+        </div>    
     </form>
 </div>

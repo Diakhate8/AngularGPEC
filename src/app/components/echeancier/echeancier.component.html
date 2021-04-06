@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="text-center entete2"><h1>Mes echeanciers</h1></div>            
+    <div class="text-center entete2">Mes echeanciers</div>            
     <div class="row justify-content-center mt-2">
             <!-- Modalite de paiement -->
         <form [formGroup]= "formAddModalite" > 
@@ -174,13 +174,16 @@
                 </tr>
                 <tr>
                     <td>
-                        <button type="submit"  class="btn btn-primary" (click)="otherContrat()" >Ajouter Vente</button>       
                     </td>
                     <td>
                     </td>
                     <td>
-                        <button type="submit"  class="btn btn-primary" (click)="onEcheance()">Nouvelle vente</button>       
                     </td>
+                    <div class="button-row button">
+                        <button class="mat-raised-button mat-warn" (click)="close()" >Precedent</button>  
+                        <button type="submit"  class="mat-raised-button mat-primary" (click)="otherContrat()" >Ajouter Vente</button>       
+                        <button type="submit"  class="mat-raised-button  " (click)="onEcheance()">Nouvelle vente</button>       
+                    </div> 
                 </tr>
             </table>
         </form>

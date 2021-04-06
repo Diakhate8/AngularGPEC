@@ -41,5 +41,7 @@ export class SubrogeComponent implements OnInit {
     localStorage.setItem('currentSubroge', JSON.stringify(data));
     return this.router.navigate(['/app/addfacture']);
   }
-
+  close(){
+    return this.router.navigate(['/app/addclient']);
+  }
 }

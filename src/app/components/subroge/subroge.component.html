@@ -38,8 +38,12 @@
                     <label for="domicile">Demeurant à</label>
                     <input type="text" formControlName="domicile" class="form-control" id="domicile" >
                 </div>           
+            </div> 
+            <div class="button-row button">
+                <button class="mat-raised-button">annuler</button>
+                <button class="mat-raised-button mat-warn" (click)="close()" >Precedent</button>  
+                <button type="submit"  class="btn btn-primary" (click)="onSubroge()" >Suivant</button>               
             </div>         
-            <button type="submit"  class="btn btn-primary" (click)="onSubroge()" >Suivant</button>               
         </form>
           
 </div>

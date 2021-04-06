@@ -45,8 +45,14 @@ export class ClientComponent implements OnInit {
   //set iitem contrat in localStorage
   localStorageAddData(data){
     localStorage.setItem('currentClient', JSON.stringify(data));
-    return this.router.navigate(['/app/addsubroge']);    
-  }
+    return this.router.navigate(['/app/addfacture']);
    
+  }
+  onAddSub(){
+    const CLIENT = this.formAddClient.value;
+    this.objectClient = CLIENT ;
+    localStorage.setItem('currentClient', JSON.stringify(this.objectClient ));
+    return this.router.navigate(['/app/addsubroge']); 
+   }
 
 }
