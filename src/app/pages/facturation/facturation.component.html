@@ -1,0 +1,33 @@
+<form [formGroup]= "factureServ.recuForm" class="normal-form">
+    <ng-template matStepLabel>Facturation</ng-template>
+      <mat-grid-list cols="2" rowHeight="300px">
+          <mat-grid-tile>
+              <div class="controls-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Reference facture</mat-label>
+                    <input matInput type="texte" placeholder="" formControlName="reference" required>
+                  <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label>Details</mat-label>
+                    <input matInput placeholder="" formControlName="details" required>
+                  <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Montant</mat-label>
+                    <input matInput type="number" formControlName="montant" required class="example-right-align">
+                    <span matPrefix>FCFA&nbsp;</span>
+                    <span matSuffix>.00</span>
+                </mat-form-field>
+              </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+          </mat-grid-tile>
+      </mat-grid-list> 
+      <div>
+        <button mat-button color="warn" >Back</button>
+        <button mat-button color="primary" type="submit" (click)="onRecu()">
+          Suivant
+        </button> 
+      </div>
+</form>

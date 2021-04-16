@@ -163,7 +163,7 @@ export class EcheancierComponent implements OnInit {
       echeanciers: objM,
       subroge: objS     
     };
-    console.log(this.addOtherContrat);
+    // console.log(this.addOtherContrat);
 
     this.contratService.addOtherContrat(this.addOtherContrat).subscribe(data => {
       alert(' Vente enregistrée avec succé');

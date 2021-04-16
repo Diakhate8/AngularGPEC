@@ -17,6 +17,8 @@ import { VenteComponent } from './pages/vente/vente.component';
 import { OtherContratComponent } from './pages/other-contrat/other-contrat.component';
 import { EcheancierComponent } from './components/echeancier/echeancier.component';
 import { FormClientComponent } from './components/form-client/form-client.component';
+import { ListeVentesComponent } from './pages/liste-ventes/liste-ventes.component';
+import { FacturationComponent } from './pages/facturation/facturation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -37,7 +39,11 @@ const routes: Routes = [
       { path: 'othercontrat', component: OtherContratComponent },
       { path: 'ventes', component: VenteComponent } ,
       { path: 'echeancier', component: EcheancierComponent },
-      { path: 'form', component: FormClientComponent }
+      { path: 'form', component: FormClientComponent },
+      { path: 'listeventes', component: ListeVentesComponent },
+      { path: 'facturation', component: FacturationComponent }
+
+
 
 
 

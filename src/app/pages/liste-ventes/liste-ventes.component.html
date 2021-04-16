@@ -1,0 +1,54 @@
+<div class="table-responsive">
+    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th class="th-sm">Date</th>
+            <th class="th-sm">N°contrat</th>
+            <th class="th-sm">Ref Contrat</th>
+            <th class="th-sm">Client</th>
+            <th class="th-sm">Montant</th>
+            <th class="th-sm">Acompte</th>
+            <th class="th-sm">Reliquat</th>
+            <th class="th-sm">Articles</th>
+            <th class="th-sm">1er Echeancier</th>
+            <th class="th-sm">2e Echeancier</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let vente of listeVente">
+                <td>{{vente.createdAt}}</td>
+                <td>{{vente.numContrat}}</td>
+                <td><button>{{vente.reference}}</button></td>
+                <td>{{vente.client.prenom}} {{vente.client.nom}}</td>
+                <td *ngFor=" let facture of vente.factures">
+                    {{facture.montAVerser}}
+                </td>
+                <td *ngFor=" let facture of vente.factures">
+                    {{facture.acompte}}
+                </td>
+                <td *ngFor=" let facture of vente.factures">
+                    {{facture.resteAPayer}}
+                </td>
+                <td *ngFor=" let commande of vente.commandes">
+                    {{commande.designation}}<br>
+                </td>
+                <td *ngFor=" let echeancier of vente.echeanciers">
+                    {{echeancier.premierE}} {{echeancier.premierMont}}
+                </td><td *ngFor=" let echeancier of vente.echeanciers">
+                    {{echeancier.premierE}} {{echeancier.premierMont}}
+                </td><td *ngFor=" let echeancier of vente.echeanciers">
+                    {{echeancier.deuxiemeE}} {{echeancier.deuxiemeMont}}
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable();
+        $('.dataTables_length').addClass('bs-select');
+      });
+      
+</script>

@@ -4,8 +4,6 @@ import { Facture } from './../../models/facture';
 import { Subroge } from 'src/app/models/subroge';
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
 import { Client } from 'src/app/models/client';
 import { ClientService } from 'src/app/services/forms/client.service';
 import { SubrogeService } from 'src/app/services/forms/subroge.service';
@@ -27,24 +25,29 @@ export class FormClientComponent implements OnInit {
     objectFacture: Facture;
     objectArticle: any;
     contrat: Contrat;
+  
 
     constructor(private clientServ: ClientService, private subrogeServ: SubrogeService, 
-      private factureServ :FactureService, private articleServ : ArticleService, 
-      private echeancierServ: EcheancierService,private contratService: ContratService,
-      private router: Router) { }
+      private factureServ : FactureService, private articleServ : ArticleService, 
+      private echeancierServ: EcheancierService, private contratService: ContratService,
+      private router: Router ) { }
     
     ngOnInit() {
     }
     //Ajout client
+
+    
     onClient() {
       const CLIENT = this.clientServ.onClient();
       this.objectClient = CLIENT ;
+      // console.log(this.objectClient)
       return this.objectClient;
     }
     // Ajout subroge
     onSubroge() {
       const SUBROGE = this.subrogeServ.onSubroge();
       this.objectSubroge = SUBROGE ;
+      console.log(this.objectSubroge)
       return this.objectSubroge;
     }
     // Ajout Facture
@@ -65,6 +68,7 @@ export class FormClientComponent implements OnInit {
     }
     resetArticle(){
       this.articleServ.onReset();
+      localStorage.removeItem('currentArticle');
     }
 
     onEcheancier() {

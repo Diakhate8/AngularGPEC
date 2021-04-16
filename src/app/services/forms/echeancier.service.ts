@@ -1,3 +1,4 @@
+import { TransformerDateService } from './../../helpers/transformer-date.service';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,7 +14,8 @@ export class EcheancierService {
   restant: number;
   versement: number;
   
-  constructor(private fb: FormBuilder, private contratService: ContratService,
+  constructor(private fb: FormBuilder, private contratService: ContratService
+    ,private transforDate: TransformerDateService,
     private router: Router) { }
 
   form = this.fb.group(
@@ -35,18 +37,18 @@ export class EcheancierService {
  
   onEcheancier() {
     const MODALITE = {
-      premierE: this.form.value.date1, premierMont: this.form.value.mont1,
-      deuxiemeE: this.form.value.date2, deuxiemeMont: this.form.value.mont2,
-      troisiemeE: this.form.value.date3, troisiemeMont: this.form.value.mont3,
-      quatriemeE: this.form.value.date4, quatriemeMont: this.form.value.mont4,
-      cinquiemeE: this.form.value.date5, cinqiemeMont: this.form.value.mont5,
-      sixiemeE: this.form.value.date6, sixiemeMont: this.form.value.mont6,
-      septiemeE: this.form.value.date7, septiemeMont: this.form.value.mont7,
-      huitiemeE: this.form.value.date8, huitiemeMont: this.form.value.mont8,
-      neuviemeE: this.form.value.date9, neuviemeMont: this.form.value.mont9,
-      dixiemeE: this.form.value.date10, dixiemeMont: this.form.value.mont10,
-      onziemeE: this.form.value.date11, onziemeMont: this.form.value.mont11,
-      douziemeE: this.form.value.date12, douziemeMont: this.form.value.mont12
+      premierE: this.transforDate.transformer(this.form.value.date1), premierMont: this.form.value.mont1,
+      deuxiemeE: this.transforDate.transformer(this.form.value.date2), deuxiemeMont: this.form.value.mont2,
+      troisiemeE: this.transforDate.transformer(this.form.value.date3), troisiemeMont: this.form.value.mont3,
+      quatriemeE: this.transforDate.transformer(this.form.value.date4), quatriemeMont: this.form.value.mont4,
+      cinquiemeE: this.transforDate.transformer(this.form.value.date5), cinqiemeMont: this.form.value.mont5,
+      sixiemeE: this.transforDate.transformer(this.form.value.date6), sixiemeMont: this.form.value.mont6,
+      septiemeE: this.transforDate.transformer(this.form.value.date7), septiemeMont: this.form.value.mont7,
+      huitiemeE: this.transforDate.transformer(this.form.value.date8), huitiemeMont: this.form.value.mont8,
+      neuviemeE: this.transforDate.transformer(this.form.value.date9), neuviemeMont: this.form.value.mont9,
+      dixiemeE: this.transforDate.transformer(this.form.value.date10), dixiemeMont: this.form.value.mont10,
+      onziemeE: this.transforDate.transformer(this.form.value.date11), onziemeMont: this.form.value.mont11,
+      douziemeE: this.transforDate.transformer(this.form.value.date12), douziemeMont: this.form.value.mont12
     };
     return MODALITE ;
   }

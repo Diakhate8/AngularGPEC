@@ -64,6 +64,9 @@ import { SubrogeService } from './services/forms/subroge.service';
 import { EcheancierService } from './services/forms/echeancier.service';
 import { FactureService } from './services/forms/facture.service';
 import { ArticleService } from './services/forms/article.service';
+import { TransformerDateService } from './helpers/transformer-date.service';
+import { ListeVentesComponent } from './pages/liste-ventes/liste-ventes.component';
+import { FacturationComponent } from './pages/facturation/facturation.component';
 
 
 PdfMakeWrapper.setFonts(pdfFonts);
@@ -96,7 +99,9 @@ PdfMakeWrapper.setFonts(pdfFonts);
     FindClientComponent,
     EcheancierComponent,
     FormDialogComponent,
-    FormClientComponent
+    FormClientComponent,
+    ListeVentesComponent,
+    FacturationComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +146,8 @@ PdfMakeWrapper.setFonts(pdfFonts);
     SubrogeService,
     ArticleService,
     EcheancierService,
-    FactureService
+    FactureService,
+    TransformerDateService 
 
   ],
   bootstrap: [AppComponent]
