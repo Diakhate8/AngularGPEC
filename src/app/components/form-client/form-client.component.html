@@ -38,11 +38,6 @@
                           <input matInput placeholder="" formControlName="lieuNaiss" required>
                         <!-- <mat-error *ngIf="clientServ.form.controls['dateNaiss']nom.invalid">{{getErrorMessage()}}</mat-error> -->
                       </mat-form-field>
-                      <mat-form-field appearance="fill">
-                        <mat-label>Adresse</mat-label>
-                          <input matInput placeholder="" formControlName="adresse" required>
-                        <!-- <mat-error *ngIf="clientServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
-                      </mat-form-field>
                     </div>
                 </mat-grid-tile>
                 <mat-grid-tile>
@@ -76,11 +71,11 @@
                 </mat-grid-tile>
             </mat-grid-list> 
             <div>
-              <button mat-button matStepperNext type="submit" (click)="onClient()" color="primary">
-                 Suivant
-              </button>
               <button mat-button (click)="stepper.reset()" color="warn"(click)="close()">
                 Annuler
+              </button>
+              <button mat-button matStepperNext type="submit" (click)="onClient()" color="primary">
+                 Suivant
               </button>
             </div>
           </form>
@@ -167,8 +162,14 @@
                         <mat-form-field appearance="fill">
                           <mat-label>Acompte</mat-label>
                             <input matInput placeholder="" formControlName="acompte" required>
-                          <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                            <mat-error *ngIf="factureServ.form.controls['acompte'].errors?.required">
+                              invalide acompte de livraison
+                          </mat-error>                        
                         </mat-form-field>
+                        <mat-form-field appearance="fill">
+                          <mat-label>Adresse de livraison </mat-label>
+                          <input matInput  placeholder="" formControlName="adresse" required>
+                        </mat-form-field> 
                         <mat-form-field appearance="fill">
                           <mat-label>Nombre d'échéancier</mat-label>
                             <input matInput type="texte" placeholder="" formControlName="nbrEcheanciers" required>
@@ -216,7 +217,7 @@
                           <mat-error *ngIf="articleServ.form.controls['nbr'].errors?.required">
                               invalide nombre d'article
                           </mat-error>
-                        </mat-form-field> 
+                        </mat-form-field>
                       </div>
                   </mat-grid-tile>
                   <mat-grid-tile>
