@@ -29,33 +29,43 @@
             </mat-header-cell>
           </ng-container> 
           <ng-container matColumnDef="articles">
-            <mat-header-cell *matHeaderCellDef  >Articles</mat-header-cell>
+            <mat-header-cell *matHeaderCellDef style="text-align: left;">Articles</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente" >
-              {{listeVente.commandes}}
+             <span *ngFor= " let commande of listeVente.commandes " >
+              {{commande.designation}}<br>
+             </span>
             </mat-header-cell>
           </ng-container>
           <ng-container matColumnDef="nombre">
             <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.factures}}
+              <span *ngFor= " let facture of listeVente.factures ">
+                {{facture.montAVerser}}
+              </span>
             </mat-header-cell>
           </ng-container>
           <ng-container matColumnDef="montant">
             <mat-header-cell *matHeaderCellDef>Prix de vente</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.factures}}
+              <span *ngFor= " let facture of listeVente.factures ">
+                {{facture.montAVerser}}
+              </span>
             </mat-header-cell>
           </ng-container>
           <ng-container matColumnDef="acompte" >
             <mat-header-cell *matHeaderCellDef>Acompte</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.factures.acompte}}
+              <span *ngFor= " let facture of listeVente.factures ">
+                {{facture.acompte}}
+            </span>
             </mat-header-cell>
           </ng-container>
           <ng-container matColumnDef="reliquat" >
             <mat-header-cell *matHeaderCellDef>Reste a payer</mat-header-cell>
             <mat-header-cell *matCellDef="let listeVente">
-              {{listeVente.factures.resteAPayer}}
+              <span *ngFor= " let facture of listeVente.factures ">
+                {{facture.resteAPayer}}
+              </span>
             </mat-header-cell>
           </ng-container>
     </table>

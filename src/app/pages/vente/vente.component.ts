@@ -24,6 +24,7 @@ export class VenteComponent implements OnInit {
         
         this.donnees.push(this.donnees);
         this.listeVente = data;
+        
         // console.log(this.listeVente['createdAt']);
 
         this.listData = new MatTableDataSource(this.listeVente);
