@@ -9,6 +9,11 @@
     .majmin{
         text-transform: capitalize;
     }
+    .sub{
+        float: right;
+        text-align: right;
+    }
+    
 }
 h3{
     text-align: center;
@@ -28,10 +33,6 @@ ol,li{
     h1,h2{
         text-align: center;
         margin-top: 2px;
-    }
-    .sub{
-        float: right;
-        text-align: right;
     }
     
 }

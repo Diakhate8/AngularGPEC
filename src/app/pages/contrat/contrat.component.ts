@@ -55,10 +55,10 @@ export class ContratComponent implements OnInit {
   generateContrat() {
     var element = document.getElementById('contrat');
     var opt = {
-      margin: [0.8, 1.05, 0.8, 0.5],
+      margin: [0.8, 0.9, 1.2, 0.8],
       filename: 'CONTRAT.pdf',
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2 },
+      html2canvas: { scale: 3 },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     };
     // New Promise-based usage:

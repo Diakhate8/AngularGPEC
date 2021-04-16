@@ -1,16 +1,16 @@
-<p>contrat works!</p>
 <div class="container">
-  <div class="row">
-    <button type="submit" class=" btn btn-sm btn-primary shadow-sm" (click)="generateContrat()">
+  <div>
+    <button type="submit" class=" d-none d-sm-inline-block btn btn-sm btn-primary justify-content-betweenshadow-sm" (click)="generateContrat()">
       <i class="fas fa-download fa-sm text-white-50"></i> Generate Contrat
     </button>
   </div>
+  
   <!-- Contrat -->
   <div class="row">
       <pre>Reference: {{contratPdf.reference}}<br>Numero contrat: {{contratPdf.numContrat}}<br>Date de création: {{contratPdf.createdAt}}
       </pre>
       <div class="col-xs-1-12" id="contrat">
-                    <h3 class="maj"> {{contratPdf.libele}} </h3> 
+                    <h3 class="maj"> {{contratPdf.libele}} </h3> <br>
                     <h4>INTITULE:</h4>
         <p style="white-space:pre-line;"> {{contratPdf.intitule}} </p>
                     <h5 style="text-align: center;" > {{contratPdf.arrete}}  </h5>
@@ -36,7 +36,7 @@
         <p style="white-space:pre-line;"> {{contratPdf.article9}} </p>
                     <h4>ARTICLE-10: CLAUSE PARTICILIERE</h4>
         <p style="white-space:pre-line;">{{contratPdf.article10}}</p><br>
-        <p><strong>Monsieur GUEYE Pape Ndiankou</strong><span class="sub majmin">Mr(Mme)<strong>{{client.prenom}} {{client.nom}}</strong></span></p>
+        <p><strong>Monsieur GUEYE Pape Ndiankou</strong><span class="sub">Mr(Mme) <span class="majmin"><strong>{{client.prenom}} {{client.nom}}</strong></span></span></p>
         <p>Signature précédée de la mention « lu et approuvé »</p>
       </div>
   </div>
@@ -82,19 +82,19 @@
             <div class="col-md-4"> </div>   
         </div><br><br>
         <div class="row mt-2">
-            <div class="col-md-7"> </div>   
-            <div class="col-md-5 r2">                
-                Date de facture: {{currentDate| date:'dd-MM-yyyy'}}<br>
-                Tel C: {{client.telephone}}<br>
-                Tel S: {{client.telephone}}<br>
-            </div>
+          <div class="col-md-7"> </div>   
+          <div class="col-md-5 r2">                
+            Date de facture: {{currentDate| date:'dd-MM-yyyy'}}<br>
+            Tel C: {{facture.telCient}}<br>
+            Tel S: {{facture.telSubroge}}<br>
+          </div>
         </div><br><br>
         <h2>FACTURE N°<span class="nbFact">{{facture.numFacture}} /BM</span></h2>   
         <div class="row mt-2 r3">
           <pre>
             Reference: {{facture.reference}}<br>
-            Facture A : Monsieur(Madame) <span class="majmin">{{client.prenom}} {{client.nom}} </span>
-            Adresse : {{client.adresse}} 
+            Facture A : Monsieur(Madame) <span class="majmin">{{facture.nomClient}} </span>
+            Adresse : {{facture.adresse}} 
             Devise :  <strong>F CFA</strong>
           </pre>
         </div>
