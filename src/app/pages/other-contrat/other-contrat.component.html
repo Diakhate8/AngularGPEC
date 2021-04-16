@@ -1,29 +1,384 @@
 <div class="container">
-    <div class="col-xl-10 col-lg-12 col-md-9">
-      <div class="card o-hidden border-0 shadow-lg my-5">
-        <div class="card-body p-0">
-          <!-- Nested Row within Card Body -->
-          <div class="row ">
-            <div class="col-lg-6 d-none d-lg-block ">
-              Client a rechercher
-            </div>
-            <div class="col-lg-6">
-              <div class="p-5">
-                <div class="text-center">
-                  <h1 class="h4 text-gray-900 mb-4">Rechercher un client</h1>
-                </div>
-                <form [formGroup]= "formSearch">
-                  <div class="form-group">
-                    <label for="numero">N° Client</label>
-                    <input type="text" formControlName="numero" class="form-control" id="numero">
+  <div>
+    <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+      {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+    </button>
+    <mat-horizontal-stepper [linear]="isLinear" #stepper>
+      <!-- Ajout Client -->
+      <mat-step [stepControl]="clientServ.form">
+        <form [formGroup]= "clientServ.form" class="normal-form">
+          <ng-template matStepLabel>Enregistrement Client</ng-template>
+          <mat-grid-list cols="2" rowHeight="300px">
+              <mat-grid-tile>
+                  <div class="controls-container">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Numero</mat-label>
+                        <input matInput placeholder="" formControlName="numero" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Prenom Client</mat-label>
+                        <input matInput placeholder="" formControlName="prenom" >
+
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Nom Client</mat-label>
+                        <input matInput placeholder="" formControlName="nom" >
+                      <!-- <mat-error *ngIf="clientServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Date de naissance</mat-label>
+                        <input matInput type="date" placeholder="" formControlName="dateNaiss" >
+                        <mat-error *ngIf="clientServ.form.controls['dateNaiss'].errors?.required">
+                          invalide  Date de naissance
+                        </mat-error>
+                      </mat-form-field> 
+                    <mat-form-field appearance="fill">
+                      <mat-label>Lieu de naissance</mat-label>
+                        <input matInput placeholder="" formControlName="lieuNaiss" >
+                      <!-- <mat-error *ngIf="clientServ.form.controls['dateNaiss']nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
                   </div>
-                  <button type="submit"  class="btn btn-search btn-primary" (click)= "onSearch()">Recherche</button>
-                </form>
-              </div>
-            </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="controls-container">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Cni ou Passeport</mat-label>
+                        <input matInput placeholder="" formControlName="cni" >
+                      <!-- <mat-error *ngIf="clientServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Délivrance cni</mat-label>
+                          <input matInput type="date" placeholder="" formControlName="dateDCni" >
+                        <!-- <mat-error *ngIf="clientServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Expiration cni</mat-label>
+                          <input matInput type="date" placeholder="" formControlName="dateECni" >
+                        <!-- <mat-error *ngIf="clientServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Domicile</mat-label>
+                        <input matInput placeholder="" formControlName="domicile" >
+                      <!-- <mat-error *ngIf="clientServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Telephone</mat-label>
+                        <input matInput placeholder="" formControlName="telephone" required>
+                      <!-- <mat-error *ngIf="clientServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field> 
+                </div>
+              </mat-grid-tile>
+          </mat-grid-list> 
+          <div>
+            <button mat-button (click)="stepper.reset()" color="warn"(click)="close()">
+              Annuler
+            </button>
+            <button mat-button color="warn"(click)="search()">
+              Rechercher
+            </button>
+            <button mat-button matStepperNext type="submit" (click)="onClient()" color="primary">
+               Suivant
+            </button>
           </div>
+        </form>
+      </mat-step>
+      <!-- Ajout Subroge -->
+      <mat-step [stepControl]="subrogeServ.form">
+        <form [formGroup]= "subrogeServ.form" class="normal-form">
+          <ng-template matStepLabel>Enregistrement Subroge</ng-template>
+            <mat-grid-list cols="2" rowHeight="300px">
+              <mat-grid-tile>
+                    <div class="controls-container">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Prenom subroge</mat-label>
+                          <input matInput placeholder="" formControlName="prenom" required>
+                        <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Nom subroge</mat-label>
+                          <input matInput placeholder="" formControlName="nom" required>
+                        <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Date de naissance</mat-label>
+                          <input matInput type="date" placeholder="" formControlName="dateNaiss" required>
+                          <mat-error *ngIf="subrogeServ.form.controls['dateNaiss'].errors?.required">
+                            invalide  Date de naissance
+                          </mat-error>
+                        </mat-form-field> 
+                      <mat-form-field appearance="fill">
+                        <mat-label>Lieu de naissance</mat-label>
+                          <input matInput placeholder="" formControlName="lieuNaiss" required>
+                        <!-- <mat-error *ngIf="subrogeServ.form.controls['dateNaiss']nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Telephone</mat-label>
+                          <input matInput placeholder="" formControlName="telephone" required>
+                        <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                      </mat-form-field> 
+                    </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                  <div class="controls-container">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Cni ou Passeport</mat-label>
+                          <input matInput placeholder="" formControlName="cni" required>
+                        <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                          <mat-label>Délivrance cni</mat-label>
+                            <input matInput type="date" placeholder="" formControlName="dateDCni" required>
+                          <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                          <mat-label>Expiration cni</mat-label>
+                            <input matInput type="date" placeholder="" formControlName="dateECni" required>
+                          <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Domicile</mat-label>
+                          <input matInput placeholder="" formControlName="domicile" required>
+                        <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
+                  </div>
+              </mat-grid-tile>
+            </mat-grid-list> 
+            <div>
+              <button mat-button matStepperPrevious color="warn">Back</button>
+              <button mat-button matStepperNext color="primary" type="submit" (click)="onSubroge()" >Suivant</button>
+            </div>
+        </form>
+      </mat-step>
+      <!-- Ajout Facture -->
+      <mat-step [stepControl]="factureServ.form">
+        <form [formGroup]= "factureServ.form" class="normal-form">
+          <ng-template matStepLabel>Facture</ng-template>
+            <mat-grid-list cols="2" rowHeight="300px">
+                <mat-grid-tile>
+                    <div class="controls-container">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Libele</mat-label>
+                          <input matInput type="texte" placeholder="" formControlName="libele" required>
+                        <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Acompte</mat-label>
+                          <input matInput placeholder="" formControlName="acompte" required>
+                        <!-- <mat-error *ngIf="subrogeServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Adresse</mat-label>
+                          <input matInput placeholder="" formControlName="adresse" >
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Nombre d'échéancier</mat-label>
+                          <input matInput type="texte" placeholder="" formControlName="nbrEcheanciers" required>
+                          <mat-error *ngIf="factureServ.form.controls['nbrEcheanciers'].errors?.required">
+                            invalide nombre d'écheanciers
+                          </mat-error>
+                      </mat-form-field> 
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                </mat-grid-tile>
+            </mat-grid-list> 
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext color="primary" type="submit" (click)="onFacture()">
+                Suivant
+              </button> 
+            </div>
+        </form>
+      </mat-step>
+      <!-- Ajout Articles -->
+      <mat-step [stepControl]="articleServ.form">
+        <form [formGroup]= "articleServ.form" class="normal-form">
+          <ng-template matStepLabel>Enregistrement Articles</ng-template>
+            <mat-grid-list cols="2" rowHeight="300px">
+                <mat-grid-tile>
+                    <div class="controls-container">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Designation</mat-label>
+                          <input matInput type="texte" placeholder="" formControlName="article" required>
+                          <mat-error *ngIf="articleServ.form.controls['article'].errors?.required">
+                            Designation
+                          </mat-error>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Prix unitaire</mat-label>
+                          <input matInput placeholder="" formControlName="prixU" required>
+                          <mat-error *ngIf="articleServ.form.controls['prixU'].errors?.required">
+                            Prix unitaire
+                          </mat-error>
+                      </mat-form-field>
+                      <mat-form-field appearance="fill">
+                        <mat-label>Nombre </mat-label>
+                        <input matInput  placeholder="" formControlName="nbr" required>
+                        <mat-error *ngIf="articleServ.form.controls['nbr'].errors?.required">
+                            invalide nombre d'article
+                        </mat-error>
+                      </mat-form-field> 
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <div class="button-row">
+                      <button mat-raised-button color="warn"(click)="resetArticle()">Annuler</button>
+                      <button mat-raised-button color="success"  (click)="articles()" >Ajouter Article</button> 
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list> 
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext color="primary" type="submit" (click)="onArticle()" >
+                Suivant
+              </button>
+            </div>
+        </form>
+      </mat-step>
+       <!-- Ajout Modalites-->
+       <mat-step [stepControl]="echeancierServ.form">
+        <form [formGroup]= "echeancierServ.form" class="normal-form">
+          <ng-template matStepLabel>Enregistrement Modalites</ng-template>
+          <mat-grid-list cols="3" rowHeight="350px">
+              <mat-grid-tile>
+                <div class="controls-container">
+                    <mat-form-field appearance="fill">
+                      <mat-label>1er Echeancier</mat-label>
+                      <input matInput type="date" placeholder="" formControlName="date1" required>
+                      <mat-error *ngIf="echeancierServ.form.controls['date1'].errors?.required">
+                          invalide  1er chéancier
+                      </mat-error> 
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Montant à verser</mat-label>
+                        <input matInput placeholder="" formControlName="mont1" required>
+                        <mat-error *ngIf="echeancierServ.form.controls['mont1'].errors?.required">
+                          invalide  Montant
+                        </mat-error>  
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Date 2</mat-label>
+                        <input matInput type="date" placeholder="" formControlName="date2">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>mont 2</mat-label>
+                        <input matInput placeholder="" formControlName="mont2" >
+                      </mat-form-field> 
+                    <mat-form-field appearance="fill">
+                      <mat-label>Date 3</mat-label>
+                        <input matInput type="date3" placeholder="" formControlName="date3">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Mont 3</mat-label>
+                        <input matInput placeholder="" formControlName="mont3">
+                      <!-- <mat-error *ngIf="echeancierServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Date 4</mat-label>
+                        <input matInput type="date4" placeholder="" formControlName="date4">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Mont 4</mat-label>
+                        <input matInput placeholder="" formControlName="mont4">
+                    </mat-form-field>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="controls-container">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Date 5</mat-label>
+                      <input matInput type="date" placeholder="" formControlName="date5">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Mont 5</mat-label>
+                      <input matInput placeholder="" formControlName="mont5">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Date 6</mat-label>
+                      <input matInput type="date" placeholder="" formControlName="date6">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Mont 6</mat-label>
+                      <input matInput placeholder="" formControlName="mont6">
+                    <!-- <mat-error *ngIf="echeancierServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Date 7</mat-label>
+                      <input matInput type="date" placeholder="" formControlName="date7">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Mont 7</mat-label>
+                      <input matInput placeholder="" formControlName="mont7">
+                    <!-- <mat-error *ngIf="echeancierServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Date 8</mat-label>
+                      <input matInput type="date" placeholder="" formControlName="date8">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Mont 8</mat-label>
+                      <input matInput placeholder="" formControlName="mont8">
+                    <!-- <mat-error *ngIf="echeancierServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                  </mat-form-field> 
+                </div>     
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="controls-container">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Date 9</mat-label>
+                      <input matInput type="date" placeholder="" formControlName="date9">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Mont 9</mat-label>
+                      <input matInput placeholder="" formControlName="mont9">
+                    <!-- <mat-error *ngIf="echeancierServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Date 10</mat-label>
+                      <input matInput type="date" placeholder="" formControlName="date10">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Mont 10</mat-label>
+                      <input matInput placeholder="" formControlName="mont10">
+                    <!-- <mat-error *ngIf="echeancierServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                  </mat-form-field> 
+                  <mat-form-field appearance="fill">
+                    <mat-label>Date 11</mat-label>
+                      <input matInput type="date" placeholder="" formControlName="date11">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Mont 11</mat-label>
+                      <input matInput placeholder="" formControlName="mont11">
+                    <!-- <mat-error *ngIf="echeancierServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Date 12</mat-label>
+                      <input matInput type="date" placeholder="" formControlName="date12">
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Mont 12</mat-label>
+                      <input matInput placeholder="" formControlName="mont12">
+                    <!-- <mat-error *ngIf="echeancierServ.form.nom.invalid">{{getErrorMessage()}}</mat-error> -->
+                  </mat-form-field>
+                </div>
+              </mat-grid-tile>
+          </mat-grid-list> 
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext color="primary" (click)="onEcheancier()" >Valider</button>
+            <button mat-raised-button color="warn"(click)="close()">annuler</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+          Please wait....
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
-      </div>
-    </div>
-    <app-client></app-client> 
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div> 
 </div>
